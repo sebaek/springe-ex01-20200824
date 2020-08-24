@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.zerock.domain.Member;
 
 import lombok.extern.log4j.Log4j;
 
@@ -60,6 +61,23 @@ public class ArgumentController {
 		log.info("g method");
 		log.info(name);
 		log.info(age);
+	}
+	
+	@RequestMapping("/h")
+	public void method8(String name, int age) {
+		log.info("h method");
+		
+		Member member = new Member();
+		member.setName(name);
+		member.setAge(age);
+		
+		log.info(member);
+	}
+	
+	@RequestMapping("/i")
+	public void method9(Member member) {
+		log.info("i method");
+		log.info(member);
 	}
 }
 
