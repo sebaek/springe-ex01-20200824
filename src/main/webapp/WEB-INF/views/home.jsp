@@ -11,7 +11,7 @@
 <h1>
 	post request
 </h1>
-<form action="d" method="post">
+<form action="sample/basicOnlyGet" method="post">
 	<input type="text" name="name"> <br>
 	<input type="submit" />
 	
