@@ -10,5 +10,6 @@
 <p> a.jsp로 포워드 됨 </p>
 <p>/d : ${myAttr }</p>
 <p>/e : ${mem.name }, ${mem.age }</p>
+<p>/f : ${ }, ${ }</p>
 </body>
 </html>
