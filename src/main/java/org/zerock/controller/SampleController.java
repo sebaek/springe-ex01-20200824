@@ -65,6 +65,7 @@ public class SampleController {
 	}
 	
 	// 134 page
+	// /sample/ex02Bean?list%5B0%5D.name=aaa&list%5B1%5D.name=bbb&list%5B2%5D.name=ccc
 	@GetMapping("/ex02Bean")
 	public String ex02Bean(SampleDTOList list) {
 		log.info("list dtos: " + list);
