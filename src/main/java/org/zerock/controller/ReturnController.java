@@ -66,7 +66,46 @@ public class ReturnController {
 		
 		return "/ret/a";
 	}
+	
+	@RequestMapping("/g")
+	public String methodg(Model model) {
+		log.info("g method");
+		
+		String[] strs = new String[]{"seoul", "jeju", "korea"};
+		model.addAttribute("cities", strs);
+		
+		return "/ret/b";
+	}
+	
+	@RequestMapping("/h")
+	public String methodh(Model model) {
+		log.info("h method");
+		
+		Member m1 = new Member();
+		m1.setName("seoul");
+		m1.setAge(22);
+		
+		Member m2 = new Member();
+		m2.setName("korea");
+		m2.setAge(33);
+		
+		//
+		
+		return "/ret/b";
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
