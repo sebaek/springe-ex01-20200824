@@ -1,6 +1,7 @@
 package org.zerock.controller;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -8,8 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.zerock.domain.CustomMemberEditor;
@@ -134,6 +137,49 @@ public class ArgumentController {
 		.registerCustomEditor(Date.class, new CustomDateEditor(format, false));
 		binder
 		.registerCustomEditor(Member.class, new CustomMemberEditor());
+	}
+	
+	@RequestMapping("/o")
+	public void method15(Model model) {
+		log.info("o method");
+		log.info(model);
+		
+		model.addAttribute("my-attr", "my-value");
+		
+		log.info(model);
+	}
+	
+	@RequestMapping("/p")
+	public void method16(@ModelAttribute("str") String str, Model model) {
+		log.info("p method");
+		log.info(model);
+		
+//		model.addAttribute("attr", service.get(str));
+//		model.addAttribute("str", str);
+		
+		log.info(model);
+	}
+	
+	@RequestMapping("/q")
+	public void method17(Model model) {
+		log.info("q method");
+		model.addAttribute("str", "str-value");
+		model.addAttribute("str-value2");
+		model.addAttribute(new Member());
+		model.addAttribute(new String[] {"a", "b"});
+		
+		List<Member> mlist = new ArrayList<Member>();
+		mlist.add(new Member());
+		model.addAttribute(mlist);
+		
+		
+		log.info(model);
+	}
+	
+	@RequestMapping("/r")
+	public void method18(@ModelAttribute Member member, Model model) {
+		log.info("r method");
+		log.info(model);
 	}
 }
 
