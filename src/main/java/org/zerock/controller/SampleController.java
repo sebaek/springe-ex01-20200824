@@ -72,6 +72,10 @@ public class SampleController {
 		
 		return "ex02Bean";
 	}
+	
+	// 135 ~ 137
+	// 2개의 메소드, 하나의 클래스
+	
 }
 
 

@@ -12,6 +12,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.zerock.domain.CustomMemberEditor;
 import org.zerock.domain.Member;
 import org.zerock.domain.MemberList;
 
@@ -119,10 +120,20 @@ public class ArgumentController {
 		log.info(date);
 	}
 	
+	@RequestMapping("/n")
+	public void method14(@RequestParam("mem") Member member) {
+		log.info("n method");
+		log.info(member);
+	}
+	
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
+		log.info("init binder");
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-		binder.registerCustomEditor(Date.class, new CustomDateEditor(format, false));
+		binder
+		.registerCustomEditor(Date.class, new CustomDateEditor(format, false));
+		binder
+		.registerCustomEditor(Member.class, new CustomMemberEditor());
 	}
 }
 
