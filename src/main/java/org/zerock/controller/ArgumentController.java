@@ -1,11 +1,14 @@
 package org.zerock.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.zerock.domain.Member;
+import org.zerock.domain.MemberList;
 
 import lombok.extern.log4j.Log4j;
 
@@ -78,6 +81,31 @@ public class ArgumentController {
 	public void method9(Member member) {
 		log.info("i method");
 		log.info(member);
+	}
+	
+	@RequestMapping("/j")
+	public void method10(@RequestParam String[] name) {
+		log.info("j method");
+		log.info(name.length);
+		for (String n : name) {
+			log.info(n);
+		}
+	}
+	
+	@RequestMapping("/k")
+	public void method11(@RequestParam("n") List<String> name) {
+		log.info("k method");
+		log.info(name.size());
+		for (String n : name) {
+			log.info(n);
+		}
+	}
+	
+	@RequestMapping("/l")
+	public void method12(MemberList member) {
+		log.info("l method");
+		log.info(member);
+		
 	}
 }
 
