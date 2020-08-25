@@ -1,0 +1,92 @@
+package org.zerock.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.zerock.domain.Member;
+
+import lombok.extern.log4j.Log4j;
+
+@Controller
+@RequestMapping("/ret")
+@Log4j
+public class ReturnController {
+
+	@RequestMapping("/a")
+	public void methoda() {
+		log.info("a method");
+	}
+	
+	@RequestMapping("/b")
+	public String methodb() {
+		log.info("b method");
+		
+		return "/ret/a";
+	}
+	
+	
+	@RequestMapping("/c")
+	@ResponseBody
+	public String methodc() {
+		log.info("c method");
+		
+		return "hello world";
+	}
+	
+	@RequestMapping("/d")
+	public String methodd(Model model) {
+		log.info("d method");
+		
+		model.addAttribute("myAttr", "my-val");
+		
+		return "/ret/a";
+	}
+	
+	@RequestMapping("/e")
+	public String methode(Model model) {
+		log.info("e method");
+		
+		Member member = new Member();
+		member.setName("john");
+		member.setAge(999);
+		
+		model.addAttribute("mem", member);
+		
+		return "/ret/a";
+	}
+	
+	@RequestMapping("/f")
+	public String methodf(Model model) {
+		log.info("f method");
+		Member member = new Member();
+		member.setName("seoul");
+		member.setAge(1000);
+		model.addAttribute(member);
+		
+		return "/ret/a";
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
