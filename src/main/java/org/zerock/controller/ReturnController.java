@@ -1,7 +1,13 @@
 package org.zerock.controller;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.zerock.domain.Member;
@@ -89,9 +95,28 @@ public class ReturnController {
 		m2.setName("korea");
 		m2.setAge(33);
 		
-		//
+		// 배열
+		Member[] members = new Member[] {m1, m2};
+//		model.addAttribute("memberList", members);
+		model.addAttribute(members);
+		
+		// List
+		List<Member> members2 = new ArrayList<>();
+		members2.add(m1);
+		members2.add(m2);
+//		model.addAttribute("memberList", members2);
+		model.addAttribute(members2);
 		
 		return "/ret/b";
+	}
+	
+	// /i?name=jeju
+	@RequestMapping("/i")
+	public String methodi(@ModelAttribute("name") String name) {
+		log.info("i method");
+		log.info(name);
+		
+		return "/ret/c";
 	}
 }
 
