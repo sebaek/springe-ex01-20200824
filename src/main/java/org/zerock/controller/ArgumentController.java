@@ -1,10 +1,15 @@
 package org.zerock.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.zerock.domain.Member;
@@ -106,6 +111,18 @@ public class ArgumentController {
 		log.info("l method");
 		log.info(member);
 		
+	}
+	
+	@RequestMapping("/m")
+	public void method13(@RequestParam("date") Date date) {
+		log.info("m method");
+		log.info(date);
+	}
+	
+	@InitBinder
+	public void initBinder(WebDataBinder binder) {
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		binder.registerCustomEditor(Date.class, new CustomDateEditor(format, false));
 	}
 }
 
