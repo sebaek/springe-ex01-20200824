@@ -18,6 +18,12 @@
 <body>
 <p>/i</p>
 <p>${name }</p>
+
+<p>/j?name=jeju&age=33</p>
+<p>${member.name }, ${member.age }</p>
+
+<p>/k?name=seoul&age=77</p>
+<p>${mem.name }, ${mem.age }</p>
 </body>
 </html>
 
