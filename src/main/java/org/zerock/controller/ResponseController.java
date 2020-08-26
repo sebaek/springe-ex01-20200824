@@ -3,6 +3,8 @@ package org.zerock.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -116,7 +118,50 @@ public class ResponseController {
 		
 		return members;
 	}
+	
+	@RequestMapping("/i")
+	public void methodi(HttpServletRequest req) {
+		log.info("i method");
+		
+		log.info(req.getQueryString());
+		
+		log.info(req.getParameter("name"));
+	}
+	
+	@RequestMapping("/j")
+	public void methodj(String name, int age) {
+		log.info("j method");
+		log.info(name);
+		log.info(age);
+	}
+	
+	@RequestMapping("/k")
+	public void methodj(HttpServletRequest req) {
+		log.info("k method");
+		log.info(req.getQueryString());
+	}
+	
+	@RequestMapping("/l")
+	@ResponseBody
+	public Member methodl(int id) {
+		log.info("l method");
+//		Member mem = service.get(id);
+		Member mem = new Member();
+		mem.setName("korea");
+		mem.setAge(11);
+		
+		return mem;
+	}
 }
+
+
+
+
+
+
+
+
+
 
 
 

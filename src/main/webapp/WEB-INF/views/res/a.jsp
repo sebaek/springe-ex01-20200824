@@ -68,7 +68,24 @@ $(function() {
 		});
 	});
 	
-
+	$("#btn-i").click(function() {
+		$.get("/res/i", "name=myname");
+	});
+	
+	$("#btn-j").click(function() {
+		$.get("/res/j", "name=myname&age=22");
+	});
+	
+	$("#btn-k").click(function() {
+		var o = {name: "myname", age:22};
+		$.get("/res/k", o);
+	});
+	
+	$("#btn-l").click(function() {
+		$.get("/res/l", "id=3", function(data) {
+			$("#result-l").append(data.name + ", " + data.age);
+		});
+	})
 })
 </script>
 <title>Insert title here</title>
@@ -101,6 +118,18 @@ $(function() {
 
 <button id="btn-h">get h</button>
 <div id="result-h"></div>
+
+<button id="btn-i">get i with data</button>
+<div id="result-i"></div>
+
+<button id="btn-j">get j with data</button>
+<div id="result-j"></div>
+
+<button id="btn-k">get k with data</button>
+<div id="result-k"></div>
+
+<button id="btn-l">get l with data</button>
+<div id="result-l"></div>
 </body>
 </html>
 
