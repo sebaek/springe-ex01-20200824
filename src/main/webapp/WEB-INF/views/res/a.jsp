@@ -25,6 +25,10 @@ $(function() {
 	$("#btn-d").click(function() {
 		$("#result-d").load("/res/d");
 	})
+	
+	$("#btn-e").click(function() {
+		$("#result-e").load("/res/e");
+	})
 })
 </script>
 <title>Insert title here</title>
@@ -39,6 +43,9 @@ $(function() {
 
 <button id="btn-d">load d</button>
 <p id="result-d"></p>
+
+<button id="btn-e">load e</button>
+<p id="result-e"></p>
 </body>
 </html>
 
