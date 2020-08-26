@@ -29,6 +29,46 @@ $(function() {
 	$("#btn-e").click(function() {
 		$("#result-e").load("/res/e");
 	})
+	
+	$("#btn-g").click(function() {
+		$("#result-g").load("/res/g");
+	})
+	
+	$("#btn-g2").click(function() {
+		$.get("/res/g", function(data) {
+			//console.log(data.name);
+			//console.log(data.age);
+			$("#result-g2-name").text(data.name);
+			$("#result-g2-age").text(data.age);
+			
+		});
+	});
+	
+	$("#btn-g-json").click(function() {
+		$.get("/res/g", function(data) {
+			console.log(data);
+		});
+	});
+	$("#btn-d-text").click(function() {
+		$.get("/res/d", function(data) {
+			console.log(data);
+			var obj = JSON.parse(data);
+			console.log(obj);
+		});
+	});
+	
+	$("#btn-h").click(function() {
+		$.get("/res/h", function(data) {
+			//console.log(data);
+			data.forEach(function(d) {
+				//console.log(d);
+				$("#result-h").append(d.name + ", " + d.age + "<br>");
+				              
+			});
+		});
+	});
+	
+
 })
 </script>
 <title>Insert title here</title>
@@ -46,6 +86,21 @@ $(function() {
 
 <button id="btn-e">load e</button>
 <p id="result-e"></p>
+
+<button id="btn-g">load g</button>
+<p id="result-g"></p>
+
+<button id="btn-g2">get g</button>
+<div id="result-g2-name"></div>
+<div id="result-g2-age"></div>
+
+<button id="btn-g-json">get g json </button>
+<button id="btn-d-text">get d text </button>
+
+<br />
+
+<button id="btn-h">get h</button>
+<div id="result-h"></div>
 </body>
 </html>
 
