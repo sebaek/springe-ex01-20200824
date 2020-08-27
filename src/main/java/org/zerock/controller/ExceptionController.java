@@ -30,10 +30,10 @@ public class ExceptionController {
 		log.info("b method done");
 	}
 	
-	@ExceptionHandler(Exception.class)
-	public void except() {
-		log.info("handle exception....");
-	}
+//	@ExceptionHandler(Exception.class)
+//	public void except() {
+//		log.info("handle exception....");
+//	}
 }
 
 
